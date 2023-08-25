@@ -5,8 +5,25 @@
   font-family: "ubunto", sans-serif;
 }
 
+@keyframes backgroundChange {
+  0% {
+    background-color: #2c2878;
+  }
+  25% {
+    background-color: #0f1b22;
+  }
+  50% {
+    background-color: #1e1b58;
+  }
+  75% {
+    background-color: #142a35;
+  }
+  100% {
+    background-color: #1f1c59;
+  }
+}
 body {
-  background: linear-gradient(180deg, rgba(89, 76, 238, 1) 0%, #8dd0f5 100%);
+  animation: backgroundChange 20s linear infinite;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,7 +35,7 @@ body {
 }
 
 .container {
-  background-color: #5c54ed;
+  background-color: rgba(210, 189, 189, 0.119);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   padding: 2rem;
   color: #fdfdfd;
@@ -39,17 +56,24 @@ body {
   border: none;
   flex: 1;
   border-radius: 4px;
+  outline: none;
 }
 .form button {
   padding: 0.8rem;
-  min-width: 50px;
+  /* min-width: 50px; */
   margin-left: 8px;
-  background-color: #8dd0f5;
+  background-color: #000000;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 50%;
   cursor: pointer;
 }
+.button:hover {
+  background-color: #9fe8c6;
+  transition: 0.6s;
+  transform: matrix(1.1, 0, 0, 1.1, 0, 0);
+}
+
 /*Clima*/
 
 #weath-data {
@@ -92,7 +116,7 @@ body {
 }
 
 #details-container #umidity {
-    border-right: solid 1px #fff;
-    padding-right: 0.5rem;
-    margin-right: 0.5rem;
+  border-right: solid 1px #fff;
+  padding-right: 0.5rem;
+  margin-right: 0.5rem;
 }

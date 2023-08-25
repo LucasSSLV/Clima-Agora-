@@ -16,7 +16,7 @@ const windElement = document.querySelector("#wind span");
 //Funções
 const getWeatherData = async (city) => {
   const apiWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}&lang=pt_br`;
- 
+
   const res = await fetch(apiWeatherUrl);
   const data = await res.json();
 
@@ -24,14 +24,22 @@ const getWeatherData = async (city) => {
   return data;
 };
 
-const showWeatherData = async(city) => {
+const showWeatherData = async (city) => {
   const data = await getWeatherData(city);
 
   cityElement.innerText = data.name;
-  tempElement.innerText = data.main.temp;
+  tempElement.innerText = parseInt(data.main.temp);
   descElement.innerText = data.weather[0].description;
-  weatherIconElement.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
-
+  weatherIconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`
+  );
+  countryElement.setAttribute(
+    "src",
+    `${apiCountry}${data.sys.country}/flat/64.png`
+  );
+  umidityElement.innerText = `${data.main.humidity}%`;
+  windElement.innerText = `${data.wind.speed} km/h`;
 };
 
 //Eventos
