@@ -23,7 +23,7 @@
   }
 }
 body {
-  animation: backgroundChange 20s linear infinite;
+  animation: backgroundChange 25s linear infinite;
   display: flex;
   justify-content: center;
   align-items: center;

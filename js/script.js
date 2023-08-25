@@ -14,6 +14,41 @@ const umidityElement = document.querySelector("#umidity span");
 const windElement = document.querySelector("#wind span");
 
 //Funções
+// Chamada para a API de geocodificação
+function showPosition(position) {
+  var latitude = position.coords.latitude;
+  var longitude = position.coords.longitude;
+
+  // Chamada para a API de geocodificação
+  fetch(
+    `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      var city =
+        data.address.city ||
+        data.address.town ||
+        data.address.village ||
+        "Cidade desconhecida";
+      showWeatherData(city);
+    })
+    .catch((error) => {
+      console.error("Erro ao obter informações da cidade:", error);
+    });
+}
+
+function showError(error) {
+  console.error("Erro ao obter a geolocalização:", error);
+  var coordinatesElement = document.getElementById("coordinates");
+  coordinatesElement.textContent = "Erro ao obter a geolocalização.";
+}
+// Obtém a geolocalização assim que a página é carregada
+if ("geolocation" in navigator) {
+  navigator.geolocation.getCurrentPosition(showPosition, showError);
+} else {
+  showError({ message: "Geolocalização não é suportada neste navegador." });
+}
+
 const getWeatherData = async (city) => {
   const apiWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}&lang=pt_br`;
 
