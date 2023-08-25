@@ -87,3 +87,12 @@ serchBtn.addEventListener("click", (e) => {
 
   showWeatherData(city);
 });
+
+cityInpunt.addEventListener("keyup", (e) => {
+  if (e.key === "Enter") {
+    const city = e.target.value;
+
+    showWeatherData(city);
+  }
+}
+);

@@ -30,12 +30,12 @@ body {
   height: 100vh;
 }
 
-.hide {
+/* .hide {
   display: none;
-}
+} */
 
 .container {
-  background-color: rgba(210, 189, 189, 0.119);
+  background-color: rgba(210, 189, 189, 0.049);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   padding: 2rem;
   color: #fdfdfd;
@@ -100,6 +100,10 @@ body {
 
 #coutry {
   height: 15px;
+}
+
+#description {
+  text-transform: capitalize;
 }
 
 #description-container {
