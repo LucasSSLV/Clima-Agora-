@@ -54,8 +54,10 @@ const getWeatherData = async (city) => {
 
   const res = await fetch(apiWeatherUrl);
   const data = await res.json();
-
-  console.log(data);
+  if (data.cod === "404") {
+    alert("Cidade não encontrada");
+  }
+  // console.log(data);
   return data;
 };
 
